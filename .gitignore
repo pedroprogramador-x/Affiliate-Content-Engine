@@ -1,0 +1,54 @@
+# ==== Segredos e ambiente ====
+.env
+.env.*
+!.env.example
+
+# ==== Node / Next.js / TypeScript ====
+node_modules/
+.pnp
+.pnp.js
+.next/
+out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.turbo/
+.vercel/
+
+# ==== Python / FastAPI ====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env.python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+*.cover
+
+# ==== Supabase / Banco de dados ====
+.supabase/
+*.sqlite3
+
+# ==== Ferramentas / editores ====
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# ==== Sistema operacional ====
+.DS_Store
+Thumbs.db
+
+# ==== Logs ====
+*.log
+npm-debug.log*
+pip-log.txt
+
+# ==== Artefatos diversos ====
+*.tmp
+.cache/
