@@ -26,3 +26,10 @@ notas específicas do Claude Code que não fazem sentido em `AGENTS.md`.
   disponíveis no momento (ex.: `git diff --check` para whitespace/conflitos,
   linters e testes assim que os apps existirem) e reporte os resultados
   explicitamente, mesmo que "não há validação aplicável ainda".
+- A política de push está em `AGENTS.md` (push normalmente exige
+  autorização; exceção apenas para persistir trabalho na própria branch
+  da tarefa, em ambiente remoto efêmero, nunca em `main`). Quando essa
+  exceção for usada, informe branch e SHA no relatório final.
+- Mensagens de commit não devem conter URLs privadas ou identificadores de
+  sessão (Claude Code, Codex ou qualquer outra ferramenta) — apenas
+  informação relevante ao código/projeto.

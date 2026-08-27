@@ -40,6 +40,16 @@ htmlcov/
 .idea/
 *.swp
 
+# ==== Configuração local de agentes de IA ====
+# Ignoramos apenas o que é estritamente local/pessoal (pode conter
+# preferências de máquina ou permissões específicas do operador).
+# Não ignoramos os diretórios inteiros (.claude/, .codex/, etc.), pois
+# podem vir a conter configuração versionada e útil ao projeto (ex.:
+# skills, hooks ou prompts compartilhados pelo time).
+.claude/settings.local.json
+.codex/settings.local.json
+.codex/*.local.json
+
 # ==== Sistema operacional ====
 .DS_Store
 Thumbs.db

@@ -5,10 +5,11 @@ Aceito
 
 ## Contexto
 O ACE terá pelo menos dois componentes de runtime desde a V1 (frontend
-Next.js e backend FastAPI), possivelmente um terceiro no futuro (worker de
-processamento de vídeo). Era preciso escolher entre múltiplos repositórios
-(polyrepo) ou um único repositório (monorepo), e definir o layout de
-diretórios mínimo para a Etapa 1A.
+Next.js e backend FastAPI), e possivelmente um terceiro **ainda dentro da
+V1** (worker de processamento de vídeo, na etapa de Video Factory — ver
+`docs/adr/0003-tech-stack-v1.md`). Era preciso escolher entre múltiplos
+repositórios (polyrepo) ou um único repositório (monorepo), e definir o
+layout de diretórios mínimo para a Etapa 1A.
 
 ## Decisão
 Adotar um monorepo único, com os aplicativos isolados sob `apps/`:
@@ -33,7 +34,10 @@ Diretórios como `packages/` (código compartilhado) ou `apps/worker`
 (processamento de vídeo) **não são criados agora**, pois não há ainda
 código para compartilhar nem funcionalidade de vídeo — serão adicionados
 quando a necessidade concreta aparecer, conforme o princípio de
-desenvolvimento incremental.
+desenvolvimento incremental. Isso é uma questão de sequenciamento, não de
+escopo: `apps/worker` pertence à V1 (processamento de vídeo é uma
+capacidade da V1, não um "futuro" pós-V1) e pode ser criado ainda dentro
+dela, assim que a etapa de Video Factory tornar sua necessidade concreta.
 
 ## Consequências
 - Um único histórico de commits e uma única pipeline de CI a configurar.

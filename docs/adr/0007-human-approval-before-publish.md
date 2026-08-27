@@ -24,8 +24,26 @@ da marca, ou de qual provider de IA gerou o conteúdo.
 ## Consequências
 - O modelo de dados de conteúdo (a ser desenhado em etapa futura) precisa
   de um campo/estado de aprovação e de rastreabilidade de quem aprovou.
-- Qualquer feature de "publicação automática" só pode ser considerada no
-  futuro mediante um novo ADR que reavalie explicitamente este princípio,
-  e não como consequência acidental de uma otimização de fluxo.
 - Providers de IA/automação podem sugerir e preparar conteúdo, mas nunca
   publicar diretamente.
+
+## Alcance de mudanças futuras
+
+Esta é uma salvaguarda permanente do ACE, não um placeholder temporário de
+uma etapa inicial. O escopo do que pode e do que não pode mudar por ADR
+futuro é explícito:
+
+- **Pode mudar por ADR futuro:** a UX da aprovação, os estados do fluxo de
+  conteúdo, o mecanismo de auditoria/rastreabilidade, e os detalhes de
+  implementação de como a aprovação é capturada e registrada.
+- **Não pode mudar por ADR futuro comum:** a exigência em si de que toda
+  publicação depende de uma ação humana explícita de aprovação. Remover
+  essa exigência (ex.: autopublicação totalmente autônoma) não é uma
+  evolução incremental do fluxo — é a alteração de um princípio
+  fundamental do projeto, e só pode ocorrer mediante decisão explícita e
+  deliberada do mantenedor, tratando-a como tal (não como consequência
+  acidental de uma otimização, de uma automação de conveniência, ou de uma
+  feature que "por engano" passa a publicar sem esse passo).
+
+Nenhuma leitura deste ADR deve ser interpretada como previsão implícita de
+autopublicação autônoma na V1 ou em qualquer etapa futura.
