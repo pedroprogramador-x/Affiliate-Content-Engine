@@ -32,7 +32,8 @@ Estes princípios valem para qualquer etapa do projeto, presente ou futura:
    infraestrutura central da V1, como o Supabase — ver
    `docs/adr/0004-supabase-as-platform.md` para os mitigadores
    proporcionais adotados nesse caso (portabilidade via Postgres puro,
-   migrations versionadas, backups, restore documentado).
+   migrations versionadas, backups; o procedimento de restore será
+   documentado quando existirem dados reais em produção).
 5. **Single-user na V1, modelo pronto para multi-brand.** Não implemente
    multi-tenancy completo (múltiplos usuários/papéis) sem necessidade
    concreta, mas escope entidades de domínio por marca desde o início.

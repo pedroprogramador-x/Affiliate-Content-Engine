@@ -35,13 +35,21 @@ renumerados. Uma decisão revista gera um novo ADR que referencia e
 substitui o anterior, em vez de editar o histórico.
 
 `Data` e `Alternativas consideradas` são as seções que passam a ser
-preferidas a partir deste ADR. ADRs anteriores a esta atualização podem
-não ter essas seções preenchidas quando a informação real (data exata da
-decisão, alternativas de fato avaliadas no momento) não foi registrada —
-nesse caso a seção é omitida em vez de preenchida com conteúdo inventado
-retroativamente. Esses ADRs continuam válidos; a lacuna é aceitável e não
-precisa ser corrigida artificialmente, mas ADRs novos ou revisados devem
-incluir as seções quando a informação existir.
+exigidas a partir deste ADR, com o seguinte alcance:
+
+- **ADRs novos** (criados a partir deste padrão) devem incluir `Data`; e
+  devem incluir `Alternativas consideradas` quando alternativas tiverem
+  sido efetivamente avaliadas no momento da decisão (se nenhuma
+  alternativa real foi avaliada, a seção é omitida, não preenchida com
+  conteúdo genérico).
+- **ADRs legados (0001–0007)**, escritos antes deste padrão, continuam
+  válidos mesmo sem `Data` ou `Alternativas consideradas`. A ausência
+  desses campos não invalida a decisão nem exige correção.
+- **Revisar um ADR legado** (correção editorial, esclarecimento, ajuste de
+  redação) não obriga, por si só, a reconstruir retroativamente uma data
+  exata ou alternativas que não foram registradas no momento da decisão
+  original. Informação histórica não registrada não deve ser inventada
+  para preencher um campo — a seção fica ausente.
 
 ## Consequências
 - Decisões ficam versionadas junto com o código, no mesmo repositório.
