@@ -11,11 +11,21 @@ ou integração externa foi implementado.
 
 - Python 3.12+
 - FastAPI + Pydantic v2
-- httpx (cliente HTTP; nesta etapa usado pelo `TestClient` e pelo smoke
-  test)
 - pytest, Ruff, mypy (qualidade)
+- httpx — **apenas ferramenta de testes nesta etapa**: usado pelo
+  `TestClient` do FastAPI (e disponível para o smoke test). **Não** é
+  dependência de runtime do backend enquanto não houver consumo HTTP
+  real; por isso está no grupo `dev`, não em `[project].dependencies`.
+  httpx continua sendo o cliente HTTP planejado do backend
+  (`docs/adr/0003-tech-stack-v1.md`); apenas sua instalação de runtime
+  foi adiada, conforme desenvolvimento incremental.
 - uvicorn — servidor ASGI **apenas para desenvolvimento local / smoke
   test** (ver `docs/adr/0008-uvicorn-dev-server.md`)
+
+Empacotamento/build do pacote Python: **Hatchling** como build backend
+PEP 517 (ver `docs/adr/0009-api-packaging-build-backend.md`). O fluxo de
+ambiente e instalação continua sendo `pip` + `venv` padrão — sem Poetry,
+uv ou Pipenv.
 
 A stack completa da V1 está em `docs/adr/0003-tech-stack-v1.md`.
 
@@ -43,7 +53,9 @@ apps/api/
 Todos os comandos abaixo são executados a partir de `apps/api/`.
 
 Requisito: Python 3.12 ou superior. A instalação usa `pip` + `venv`
-padrão — não há Poetry/uv/Pipenv.
+padrão — não há Poetry/uv/Pipenv. O `pip install -e` usa o build backend
+Hatchling apenas para empacotar o pacote (ver
+`docs/adr/0009-api-packaging-build-backend.md`).
 
 ### Windows (PowerShell)
 
@@ -119,3 +131,24 @@ Com o ambiente virtual ativado, a partir de `apps/api/`:
 | Checar whitespace/conflitos | `git diff --check`       |
 
 Os testes não acessam a internet nem serviços externos.
+
+## Aviso de depreciação nos testes
+
+O `TestClient` atual (FastAPI/Starlette sobre `httpx`) pode emitir um
+`DeprecationWarning` do Starlette relacionado à futura migração de
+`httpx` para `httpx2`. Nesta etapa, deliberadamente:
+
+- os testes continuam passando e não há incompatibilidade funcional;
+- o warning **não** é suprimido/filtrado;
+- **não** é feito downgrade de FastAPI/Starlette para escondê-lo;
+- **não** adotamos `httpx2`.
+
+A migração para `httpx2` será decidida de forma deliberada quando for
+necessária.
+
+## Variáveis de ambiente
+
+A API **não exige nenhuma variável de ambiente na Etapa 1B**: não há
+camada de configuração/settings e nenhuma variável é lida em código. O
+`.env.example` deste diretório é apenas um marcador — novas variáveis
+entram nele junto do código que efetivamente as consumir.

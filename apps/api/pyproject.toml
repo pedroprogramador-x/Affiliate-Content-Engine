@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.32,<2"]
 build-backend = "hatchling.build"
 
 [project]
@@ -11,12 +11,16 @@ dynamic = ["version"]
 dependencies = [
     "fastapi>=0.115,<1.0",
     "pydantic>=2.7,<3.0",
-    "httpx>=0.27,<1.0",
 ]
 
 [project.optional-dependencies]
+# httpx entra aqui (não em runtime) porque na Etapa 1B só é usado pelo
+# TestClient do FastAPI e pelo smoke test. Continua sendo o cliente HTTP
+# planejado do backend (ADR 0003); volta para runtime quando houver
+# consumo HTTP real.
 dev = [
     "pytest>=8.2,<9.0",
+    "httpx>=0.27,<0.29",
     "uvicorn>=0.30,<1.0",
     "ruff>=0.6,<1.0",
     "mypy>=1.11,<2.0",
