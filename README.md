@@ -3,10 +3,11 @@
 Plataforma de inteligência e automação de conteúdo afiliado,
 **multi-marketplace** e **multi-brand**.
 
-> **Status atual: Etapa 1A — Bootstrap.**
-> Este repositório contém apenas a fundação (estrutura de diretórios,
-> configuração básica e documentação). Nenhuma funcionalidade de produto
-> (Product, Marketplace, IA, geração de vídeo) foi implementada ainda.
+> **Status atual: Etapa 1B — Fundação do backend.**
+> Além da fundação do monorepo (Etapa 1A), o backend `apps/api` já tem
+> uma aplicação FastAPI mínima e executável, com o endpoint `GET /health`.
+> Nenhuma funcionalidade de produto (Product, Marketplace, IA, geração de
+> vídeo), banco de dados ou autenticação foi implementada ainda.
 
 ## O que é o ACE
 
@@ -41,7 +42,7 @@ Lista completa, com justificativas, em
 .
 ├── apps/
 │   ├── web/          # Frontend Next.js (ainda não inicializado)
-│   └── api/           # Backend FastAPI (ainda não inicializado)
+│   └── api/           # Backend FastAPI (fundação + GET /health)
 ├── docs/
 │   ├── README.md      # Índice da documentação técnica
 │   └── adr/            # Architecture Decision Records
@@ -59,10 +60,10 @@ Decisões arquiteturais relevantes são registradas como ADRs em
 [`docs/adr/`](./docs/adr) — comece por ali para entender o "porquê" por
 trás da estrutura atual.
 
-Como ainda estamos na Etapa 1A, não há apps executáveis, dependências
-instaladas ou comandos de build/test ainda. Estas seções serão preenchidas
-à medida que `apps/web` e `apps/api` forem inicializados em etapas
-futuras.
+O backend `apps/api` já é executável: instruções de setup, execução e
+comandos de teste/lint estão em [`apps/api/README.md`](./apps/api/README.md).
+O frontend `apps/web` ainda não foi inicializado — sua seção de comandos
+será preenchida quando isso acontecer, em etapa futura.
 
 ## Contribuindo
 
